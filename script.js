@@ -11,6 +11,7 @@ let Player = (name) => {
     };
 };
 
+
 // gameboard module
 let gameBoard = (() => {
     let squares = document.querySelectorAll('.grid-item');
@@ -28,8 +29,10 @@ let gameBoard = (() => {
                 gameFlow.moveCount++;
 
             }
+
             gameFlow.checkMoves(gameFlow.players[0].playerMoves);
             gameFlow.checkMoves(gameFlow.players[1].playerMoves);
+
 
             if ((gameFlow.players[0].playerMoves.length + gameFlow.players[1].playerMoves.length === 9)) {
                 gameFlow.tie();
@@ -38,6 +41,33 @@ let gameBoard = (() => {
     });
 
 })();
+
+// squares event listeners module
+let eventListeners = (() => {
+    let squares = document.querySelectorAll('.grid-item');
+
+    squares.forEach((div) => {
+        div.addEventListener('click', function() {
+            if (gameFlow.hasWon === false && (this.innerHTML === '' && (gameFlow.moveCount % 2 === 0))) {
+                this.innerHTML = 'O';
+                console.log(`Move count: ${gameFlow.moveCount}`)
+
+            } else if (this.innerHTML === '' && gameFlow.hasWon === false) {
+                this.innerHTML = 'X';
+                console.log(`Move count: ${gameFlow.moveCount}`)
+
+            } else if (gameFlow.hasWon === true) {
+                console.log(`Move count: ${gameFlow.moveCount}`)
+                this.innerHTML = '';
+                gameFlow.hasWon = false;
+            }
+            if (gameFlow.players[1].isBot === true && computer.isComputerTurn()) {
+                computer.randomMove();
+            }
+        });
+    });
+})();
+
 
 // game flow module
 let gameFlow = (() => {
@@ -164,28 +194,6 @@ let gameFlow = (() => {
     };
 })();
 
-// squares event listeners module
-let eventListeners = (() => {
-    let squares = document.querySelectorAll('.grid-item');
-
-    squares.forEach((div) => {
-        div.addEventListener('click', function() {
-            if (gameFlow.hasWon === false && (this.innerHTML === '' && (gameFlow.moveCount % 2 === 0))) {
-                this.innerHTML = 'O';
-                console.log(`Move count: ${gameFlow.moveCount}`)
-
-            } else if (this.innerHTML === '' && gameFlow.hasWon === false) {
-                this.innerHTML = 'X';
-                console.log(`Move count: ${gameFlow.moveCount}`)
-
-            } else if (gameFlow.hasWon === true) {
-                console.log(`Move count: ${gameFlow.moveCount}`)
-                this.innerHTML = '';
-                gameFlow.hasWon = false;
-            }
-        });
-    });
-})();
 
 // Form modal
 let formHandler = (() => {
@@ -294,10 +302,16 @@ let computer = (() => {
     let randomMove = () => {
         let squares = document.getElementsByClassName('grid-item');
 
-        while (gameFlow.moveCount % 2 !== 0) {
-            let randomNumber = Math.floor(Math.random() * 9) + 1;
-            if (!gameFlow.players[0].playerMoves.includes(randomNumber) && !gameFlow.players[1].playerMoves.includes(randomNumber)) {
-                squares[randomNumber].click();
+        while (computer.isComputerTurn() === true) {
+            let randomNumber = Math.floor(Math.random() * 9);
+            if (gameFlow.players[0].playerMoves.includes(randomNumber + 1) || gameFlow.players[1].playerMoves.includes(randomNumber + 1)) {
+                // do nothing
+                console.log(`Random number ${randomNumber}`);
+                console.log('already taken');
+            } else {
+                console.log(`Random number ${randomNumber}`);
+                squares[randomNumber].click()
+                //break;
             }
         }
     }
