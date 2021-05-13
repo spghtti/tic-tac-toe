@@ -1,11 +1,82 @@
+body {
+	background-color: rgb(184, 184, 209);
+}
 h1 {
     font-size: 60px;
+	font-family: 'Ubuntu', sans-serif;
+
 }
-.header {
+p,
+h2,
+button,
+label,
+input,
+form {
+	font-family: 'Ubuntu', sans-serif;
+}
+#header {
+	display: flex;
     text-align: center;
-    width: auto;
-    margin-top: 30px;
+	align-items: center;
+	justify-content: center;
+    width: 100%;
+    margin-top: 50px;
+	flex-wrap: nowrap;
 }
+#blurred-header {
+	display: flex;
+    text-align: center;
+	align-items: center;
+	justify-content: center;
+    width: 100%;
+    margin-top: 50px;
+	flex-wrap: nowrap;
+	filter: blur(2px);
+	
+}
+.bounce {
+	-webkit-animation: bounce 5s infinite ease-in-out;
+    animation: bounce 5s infinite ease-in-out;
+}
+@-webkit-keyframes bounce {
+	10% {
+		-webkit-transform: translate(0px, -20px)
+	}
+	0%, 20%, 70%, 90% {
+		-webkit-transform: translate(0px, 0px)
+	}
+}
+
+@keyframes bounce {
+	10% {
+		-webkit-transform: translate(0px, -20px)
+	}
+	0%, 20%, 70%, 90% {
+		-webkit-transform: translate(0px, 0px)
+	}
+}
+#headline1 {
+	color: rgb(91, 95, 151);
+}
+#headline2 {
+	color: rgb(255, 128, 25);
+	animation-delay: 1.2s;
+}
+#headline3 {
+	color: rgb(255, 107, 108);
+	animation-delay: 2.4s;
+}
+.pulse {
+	animation: pulse infinite ease-in-out;
+	animation-duration: 1s;
+}
+
+@keyframes pulse {
+	0% {transform: scale(1);}
+	50% {transform: scale(1.5);}
+	100% {transform: scale(1);}
+}
+
 .main {
     display: flex;
     justify-content: center;
@@ -22,8 +93,11 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 5px solid black;
+    border: 5px solid #FFFFFB;
+	
+	border-radius: 5px;
     font-size: 70px;
+	font-family: 'Ubuntu', sans-serif;
 }
 .break {
     display: flex;
@@ -44,8 +118,8 @@ h1 {
 }
 .modal-content {
 	background-color: #ffffff;
-	margin: 15% auto;
-	padding: 20px;
+	margin: 10% auto;
+	padding: 25px;
 	border: 1px solid #888;
 	width: 400px;
 	height: 45%;
@@ -57,21 +131,22 @@ h1 {
 	display: flex;
 	justify-content: center;
 	margin-top: 20px;
+	font-family: 'Ubuntu', sans-serif;
 }
 form {
 	padding: 30px 0 30px 0;
 	display: inline-block;
-	width: auto;
+	width: 100%;
 }
 label {
 	font-size: 16px;
 	font-weight: bold;
 }
 .input {
-	width: 100%;
+	width: 85%;
 	font-size: 16px;
 	padding: 15px;
-	margin: 5px 0 22px 0;
+	margin: 20px 0 20px 10px;
 	display: inline-block;
 	border: none;
 	background: #f1f1f1;
@@ -83,8 +158,10 @@ label {
 	padding: 15px;
 	margin: 5px 0 22px 0;
 	display: inline-block;
-	border: 1px solid gray;
-	background: #f1f1f1;
+	border-radius: 5px;
+	border: 1px solid #858585;
+	color: #FFFFFB;
+	background: #ff5050;
 }
 .formButton {
     text-align: center;
@@ -92,7 +169,8 @@ label {
 .radio {
 	display: flex;
 	width: 200px;
-	margin-top: 20px;
+	margin: 40px 0 0px 0;
+	text-align: left;
 }
 #scoreboard {
 	margin-top: 20px;
@@ -103,7 +181,31 @@ label {
 	flex-wrap: wrap;
 	flex-direction: column;
 }
+#p1-score {
+	text-align: right;
+}
+#p2-score {
+	text-align: right;
+}
 #message {
 	margin-top: 10px;
+	margin-bottom: 10px;
 	font-size: 20px;
+}
+label {
+	float: left;
+	text-align: left;
+	clear: none;
+	display: block;
+	padding: 0px 1em 0px 8px;
+}
+input[type=radio],
+input.radio {
+  float: left;
+  clear: none;
+  margin: 0px 0px 0px 0px;
+}
+input[type=text],
+input.text {
+  border: 1px solid gray;
 }

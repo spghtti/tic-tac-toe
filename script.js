@@ -283,11 +283,23 @@ let formHandler = (() => {
     document.getElementById("blurred-header").id = "header";
   }
 
+  function coinFlip() {
+    let number = Math.floor(Math.random() * 2);
+
+    if (number === 0) {
+      gameFlow.moveCount = 0;
+    } else {
+      gameFlow.moveCount = 1;
+      computer.randomCorner();
+    }
+  }
+
   form.addEventListener("submit", handleForm);
   form.addEventListener("submit", getPlayers);
   form.addEventListener("submit", setBot);
   form.addEventListener("submit", showScore);
   form.addEventListener("submit", removeBlur);
+  form.addEventListener("submit", coinFlip);
 
   return {
     showScore,
@@ -376,8 +388,8 @@ let computer = (() => {
       let randomNumber = Math.floor(Math.random() * 4);
 
       if (
-        !gameFlow.players[0].playerMoves.includes(randomNumber + 1) &&
-        !gameFlow.players[1].playerMoves.includes(randomNumber + 1)
+        !gameFlow.players[0].playerMoves.includes(corners[randomNumber] + 1) &&
+        !gameFlow.players[1].playerMoves.includes(corners[randomNumber] + 1)
       ) {
         squares[corners[randomNumber]].click();
         break;

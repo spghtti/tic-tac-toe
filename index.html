@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="reset.css" type="text/css" media="all">
     <link rel="stylesheet" href="main.css" type="text/css" media="all">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap" rel="stylesheet"> 
     <link rel="shortcut icon" href="#">
     <title>Tic-Tac-Toe</title>
 </head>
@@ -28,9 +30,12 @@
     </div>
 </div>
 <body>
-    <div class='header'>
-        <h1>Tic-tac-toe</h1>
-    <div>
+    <div class='header' id="blurred-header">
+        <h1 class='bounce' id='headline1'>Tic</h1><h1>-</h1>
+        <h1 class='bounce' id='headline2'>tac</h1>
+        <h1>-</h1>
+        <h1 class='bounce' id='headline3'>toe</h1>
+    </div>
     <div class='main'>
         <div class='grid'>
             <div class='grid-item' id='1' value='1'></div>
@@ -45,9 +50,9 @@
         </div>
     </div>
     <div id='scoreboard'>
+        <p id='message' class='pulse'></p>
         <h2 id='p1-score'></h2>
         <h2 id='p2-score'></h2>
-        <p id='message'></p>
     </div>
 </body>
 <script type="text/javascript" src="script.js"></script>
