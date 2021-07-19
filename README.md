@@ -1,6 +1,6 @@
 # tic-tac-toe
 
-A tic-tac-toe game you can play against another person or a computer. The computer has some basic logic functionality to play, but it isn't very difficult to beat.
+A tic-tac-toe game you can play against another person or a computer. The computer is bundled with some basic logic for strategy, but it isn't too difficult to beat.
 
 This is an assignment for The Odin Project's full-Stack Javascript course. 
 
